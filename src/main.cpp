@@ -10,6 +10,7 @@
 #include "cheat/HitEffect.h"
 #include "cheat/InstantBreak.h"
 #include "cheat/MobVacuum.h"
+#include "cheat/StatModifier.h"
 
 #include "cheat/misc/About.h"
 
@@ -32,13 +33,12 @@ void Run(HMODULE* phModule) {
 	OpenConsole();
 	LOG_INFO("Injected successfully!");
 
-	uintptr_t qwGameAssembly;
-	while ((qwGameAssembly = (uintptr_t)GetModuleHandle("GameAssembly.dll")) == 0) {
+	while ((global::process::qwGameAssembly = (int64_t)GetModuleHandle("GameAssembly.dll")) == 0) {
 		LOG_INFO("GameAssembly isn't initialized...\n");
 		Sleep(2000);
 	}
 
-	LOG_DEBUG("GameAssembly found at: 0x%p", (uintptr_t*)qwGameAssembly);
+	LOG_DEBUG("GameAssembly found at: 0x%p", global::process::qwGameAssembly);
 
 	constexpr int delayInit = 5000;
 	constexpr int delaySecInit = delayInit / 1000;
@@ -55,6 +55,7 @@ void Run(HMODULE* phModule) {
 		ADD_FEATURE(HitEffect),
 		ADD_FEATURE(NoCD),
 		ADD_FEATURE(MobVacuum),
+		ADD_FEATURE(StatModifier),
 		ADD_FEATURE(About)
 	});
 	#undef ADD_FEATURE

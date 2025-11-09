@@ -13,7 +13,7 @@ DO_APP_FUNC(0x01599D00, List_1_LogicEntity_*, AdventureModuleController_get_play
 DO_APP_FUNC(0x0165A340, bool, AreaEffectEntity_OnHitActor, (AreaEffectEntity* __this, HitBox* hitBox, int32_t uniqueAttackId, int32_t onceAttackTargetCount, LogicEntity* entity, DeterministicRaycastHit* raycastHit, bool* damaged, GameObject* hurtEffectPrefab, bool isHittedEffectScale, bool effectIgnoreTimeScale, MethodInfo* method));
 DO_APP_FUNC(0x016605A0, bool, AreaEffect_AttackComponent_OnHitActor, (AreaEffect_AttackComponent* __this, HitBox* hitBox, int32_t uniqueAttackId, int32_t onceAttackTargetCount, LogicEntity* entity, DeterministicRaycastHit* raycastHit, bool* damaged, GameObject* hurtEffectPrefab, bool isHittedEffectScale, bool effectIgnoreTimeScale, MethodInfo* method));
 DO_APP_FUNC(0x016A4390, bool, AdventureWeapon_OnHitActor, (AdventureWeapon* __this, HitBox* hitBox, int32_t uniqueAttackId, int32_t onceAttackTargetCount, LogicEntity* actor, DeterministicRaycastHit* raycastHit, bool* damaged, GameObject* hurtEffectPrefab, bool isHittedEffectScale, bool effectIgnoreTimeScale, MethodInfo* method));
-DO_APP_FUNC(0x0168A870, bool, AdventureBullet_OnHitActor, (AdventureBulletBase* __this, HitBox* hitBox, int32_t uniqueAttackId, int32_t onceAttackTargetCount, LogicEntity* actor, DeterministicRaycastHit* raycastHit, bool* damaged, GameObject* hurtEffectPrefab, bool isHittedEffectScale, bool effectIgnoreTimeScale, MethodInfo* method));
+DO_APP_FUNC(0x0168A870, bool, AdventureBulletBase_OnHitActor, (AdventureBulletBase* __this, HitBox* hitBox, int32_t uniqueAttackId, int32_t onceAttackTargetCount, LogicEntity* actor, DeterministicRaycastHit* raycastHit, bool* damaged, GameObject* hurtEffectPrefab, bool isHittedEffectScale, bool effectIgnoreTimeScale, MethodInfo* method));
 
 // No Cooldown
 DO_APP_FUNC(0x01474580, void, PlayerSkillCd_ReduceSkillSection, (PlayerSkillCd* __this, int32_t skillId, bool beginResume, MethodInfo* method));
@@ -42,8 +42,12 @@ DO_APP_FUNC(0x010FA3A0, FP, CommonHelper_GetTerrainHeight_1, (TSVector2 targetPo
 DO_APP_FUNC(0x0159B3F0, iFP, SpecialAttributeList_GetAttributeValue, (SpecialAttributeList* __this, GameEnum_specialAttributeType__Enum type, MethodInfo* method));
 DO_APP_FUNC(0x01468250, bool, MonsterToughnessInfo_DamageToToughness, (MonsterToughnessInfo* __this, AdventureActor* from, int32_t damage, IList_1_System_Int32_* hitDamageTag, MethodInfo* method));
 
+// Always Crit
+DO_APP_FUNC(0x010120E0, iFP, ActorAdditionalAttrInfo_get_critRate, (ActorAdditionalAttrInfo* __this, MethodInfo* method));
+
 DO_APP_FUNC(0x051FF150, FP, FP_op_Implicit, (int32_t value, MethodInfo* method));
 DO_APP_FUNC(0x05213060, FP, iFP_get_Value, (iFP* __this, MethodInfo* method));
+DO_APP_FUNC(0x05213D10, iFP, iFP_op_Implicit, (FP val, MethodInfo* method));
 
 // Singleton
 DO_APP_FUNC(0x00014840, void*, Singleton_GetInstance, (MethodInfo* method));

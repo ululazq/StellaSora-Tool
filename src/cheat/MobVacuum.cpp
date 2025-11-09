@@ -67,6 +67,9 @@ namespace cheat::feature
 		if (adventurePlayerController == nullptr)
 			return;
 
+		if (!adventureModuleController->fields._enterBattleStateTimes)
+			return;
+
 		auto monsterActors = TO_UNI_LIST(app::AdventureModuleController_get_monsterActors(adventureModuleController, nullptr), app::LogicEntity*);
 		if (monsterActors == nullptr)
 			return;

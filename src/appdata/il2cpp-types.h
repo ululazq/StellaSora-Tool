@@ -3718,7 +3718,6 @@ struct LogicMonoComponent {
     struct LogicMonoComponent__Fields fields;
 };
 
-
 struct __declspec(align(8)) LogicComponent__Fields {
     struct LogicEntity *_Entity_k__BackingField;
     bool active;
@@ -4015,6 +4014,18 @@ struct ActorHealthInfo {
     struct ActorHealthInfo__Class *klass;
     MonitorData *monitor;
     struct ActorHealthInfo__Fields fields;
+};
+
+struct __declspec(align(8)) ActorAdditionalAttrInfo__Fields {
+    struct AttributeList *_attributeList_k__BackingField;
+    bool _forceCrit_k__BackingField;
+    bool _forceMissDamage_k__BackingField;
+};
+
+struct ActorAdditionalAttrInfo {
+    struct ActorAdditionalAttrInfo__Class *klass;
+    MonitorData *monitor;
+    struct ActorAdditionalAttrInfo__Fields fields;
 };
 
 struct AdventureActor__Fields {
@@ -4553,7 +4564,6 @@ struct __declspec(align(8)) Dictionary_2_System_Int64_AdventureActor___Fields {
     struct Object *_syncRoot;
 };
 
-
 struct Dictionary_2_System_Int64_AdventureActor___VTable {
     VirtualInvokeData Equals;
     VirtualInvokeData Finalize;
@@ -4826,7 +4836,6 @@ struct HitBox {
     MonitorData *monitor;
     struct HitBox__Fields fields;
 };
-
 
 struct iFP {
     struct FP ObscuredFP;

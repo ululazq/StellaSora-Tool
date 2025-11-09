@@ -24,7 +24,7 @@ namespace cheat
 		const ImGuiViewport* main_viewport = ImGui::GetMainViewport();
 		ImGuiIO& io = ImGui::GetIO();
 		ImGui::SetNextWindowPos(ImVec2(io.DisplaySize.x * 0.5f, io.DisplaySize.y * 0.5f), ImGuiCond_Once, ImVec2(0.5f, 0.5f));
-		ImGui::SetNextWindowSize({ 375, 275 }, ImGuiCond_Once);
+		ImGui::SetNextWindowSize({ 600, 440 }, ImGuiCond_Once);
 		
 		if (!ImGui::Begin("StellaSora-Tool")) {
 			return ImGui::End();
@@ -37,7 +37,6 @@ namespace cheat
 					auto& featureInfo = feature->GetGUIInfo();
 					if (featureInfo.isGroup) {
 						ImGui::BeginGroupPanel(featureInfo.name.c_str());
-						//ImGui::SeparatorText(featureInfo.name.c_str());
 						feature->DrawMain();
 						ImGui::EndGroupPanel();
 					} else {
