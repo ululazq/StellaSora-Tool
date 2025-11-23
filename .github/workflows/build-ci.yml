@@ -1,0 +1,40 @@
+# File: .github/workflows/build-ci.yml
+
+name: 🛠️ CI Build Windows (x64 Release)
+
+# Kapan workflow ini akan dijalankan
+on:
+  push:
+    branches: [ main ] # Jalankan pada setiap push ke branch 'main'
+  pull_request:
+    branches: [ main ] # Juga jalankan pada setiap Pull Request
+
+jobs:
+  build:
+    # Menggunakan runner Windows karena ini adalah proyek Visual Studio C++
+    runs-on: windows-latest
+    
+    steps:
+    - name: ⬇️ Checkout code
+      # Mengambil kode dari repositori
+      uses: actions/checkout@v4
+
+    - name: ⚙️ Setup MSBuild
+      # Mengatur environment agar perintah 'msbuild' dapat diakses
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: 🔨 Build Solusi (StellaSora-Tool.sln)
+      # Menjalankan MSBuild untuk mengkompilasi solusi
+      # Opsi: /p:Configuration=Release -> Menggunakan konfigurasi Release
+      # Opsi: /p:Platform=x64 -> Menargetkan arsitektur 64-bit
+      run: msbuild StellaSora-Tool.sln /p:Configuration=Release /p:Platform=x64
+      # Catatan: MSBuild akan menempatkan output di folder x64/Release/ secara default.
+
+    - name: ⬆️ Upload Build Artifact
+      # Mengunggah hasil kompilasi (DLL/EXE) sebagai Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: StellaSora-Tool-x64-Release
+        path: x64/Release/
+        # Path: Mengunggah seluruh isi folder output build (misalnya: StellaSora.dll)
+        retention-days: 7 # Artifact akan disimpan selama 7 hari
